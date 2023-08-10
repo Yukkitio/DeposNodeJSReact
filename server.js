@@ -1,6 +1,6 @@
 const express = require('express');
 const http = require('http');
-const { Server } = require('socket.io'); // Utilize Server from socket.io module
+const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
@@ -16,13 +16,24 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log('A user connected');
 
+  // Generate a unique ID for the user
+  const userId = socket.id;
+
+  // Send the user's ID to the connected user
+  socket.emit('userId', userId);
+
   socket.on('message', (data) => {
-    console.log('Received:', data);
-    socket.emit('message', 'Hello from the server');
+    console.log(`Received from user ${userId}:`, data);
+    socket.emit('message', `Hello from the server (User ${userId})`);
   });
 
+  socket.on('slider', (data) => {
+    console.log(`user ${userId} set volume to :`, data);
+  });
+
+
   socket.on('disconnect', () => {
-    console.log('A user disconnected');
+    console.log(`User ${userId} disconnected`);
   });
 });
 
