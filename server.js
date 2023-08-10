@@ -24,11 +24,20 @@ io.on('connection', (socket) => {
 
   socket.on('message', (data) => {
     console.log(`Received from user ${userId}:`, data);
-    socket.emit('message', `Hello from the server (User ${userId})`);
+    socket.emit('message', `message reçu (serveur)`);
   });
 
+
   socket.on('slider', (data) => {
-    console.log(`user ${userId} set volume to :`, data);
+    console.log(`user ${userId} set value to :`, data);
+  });
+
+  socket.on('radio', (data) => {
+    console.log(`user ${userId} change Radio to :`, data);
+  });
+
+  socket.on('select', (data) => {
+    console.log(`user ${userId} select :`, data);
   });
 
 
