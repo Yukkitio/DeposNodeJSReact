@@ -73,7 +73,7 @@ export default function Demo({ socket, userId }) {
   };
 
   return (
-    <Paper elevation={8} sx={{ width: '40%', p: '2vh' }}>
+    <Paper elevation={8} sx={{ m: '2vh', p: '2vh' }}>
       <Typography>Showcase</Typography>
       <Typography>ID de l'utilisateur : {userId}</Typography>
 

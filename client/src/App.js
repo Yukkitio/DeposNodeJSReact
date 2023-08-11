@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 
 import Demo from './components/demo'; // Respectez la casse du nom de fichier
 import Eno from './components/eno';   // Mettez à jour le chemin d'importation
+import BaseDeDonness from './components/baseDeDonnees';   // Mettez à jour le chemin d'importation
 
 const socket = io('http://localhost:5000');
 
@@ -21,14 +22,12 @@ export default function App() {
       <Grid
         container
         direction="row"
-        justifyContent="space-evenly"
-        alignItems="stretch"
-        sx={{mt:'2vh'}}
+        justifyContent="space-between"
+        alignItems="flex-start"
       >
-
         <Demo socket={socket} userId={userId} />
+        <BaseDeDonness socket={socket} userId={userId} />
         <Eno socket={socket} userId={userId} />
-
       </Grid>
   );
 }
